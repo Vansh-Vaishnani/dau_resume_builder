@@ -98,9 +98,9 @@ function App() {
       // First, protect existing \\ (line breaks)
       .replace(/\\\\/g, 'XLINEBREAKX')
       // Convert Markdown bold to LaTeX
-      .replace(/\*\*([^\*]+)\*\*/g, 'XBOLDSTARTX$1XBOLDENDX')
+      .replace(/\*\*([^*]+)\*\*/g, 'XBOLDSTARTX$1XBOLDENDX')
       // Convert Markdown italic to LaTeX (single asterisk, not part of bold)
-      .replace(/(?<!\*)\*(?!\*)([^\*]+)\*(?!\*)/g, 'XITALICSTARTX$1XITALICENDX')
+      .replace(/(?<!\*)\*(?!\*)([^*]+)\*(?!\*)/g, 'XITALICSTARTX$1XITALICENDX')
       // Now escape special LaTeX characters
       .replace(/&/g, '\\&')
       .replace(/%/g, '\\%')
@@ -769,16 +769,19 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
   return (
     <div className="app">
       <header className="header">
-        <div className="header-content">
-          <h1><FiFileText /> DAU Resume Builder</h1>
-          <p>Dhirubhai Ambani University - Official Resume Template Generator</p>
+        <div className="header-left">
+          <img src={dauLogo} alt="DAU Logo" className="dau-logo" />
+          <div className="header-content">
+            <h1>DAU Resume Builder</h1>
+            <p>Made only for Dhirubhai Ambani University Students</p>
+          </div>
         </div>
         <div className="header-actions">
           <button onClick={() => setShowHelp(true)} className="btn-help">
-            <FiHelpCircle /> Help
+            <FiHelpCircle /> <span>Help</span>
           </button>
           <button onClick={() => fileInputRef.current?.click()} className="btn-import">
-            <FiUpload /> Import Resume
+            <FiUpload /> <span>Import LaTeX ZIP</span>
           </button>
           <input
             ref={fileInputRef}
@@ -788,7 +791,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
             style={{ display: 'none' }}
           />
           <button onClick={downloadZip} className="btn-download">
-            <FiDownload /> Download LaTeX ZIP Package
+            <FiDownload /> <span>Download LaTeX ZIP</span>
           </button>
         </div>
       </header>
