@@ -1,0 +1,53 @@
+ %-------------------------%
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{1pt}\item 
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\ 
+      \textit{\small#3} & \textit{\small #4} \\ 
+    \end{tabular*}\vspace{-10pt} % Tighter spacing between subheadings
+}
+
+\newcommand{\listOfSkills}[2]{
+    \vspace{0.1em}
+    \hspace{1em}
+    \small
+    \textbf{#1}: {#2}
+    \\
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-10pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{4pt}
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-10pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\newcommand{\resumeItemListStart}{\vspace{4pt}\begin{itemize}}
+
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-7pt}}
+
+\definecolor{Black}{RGB}{0, 0, 0}
+\newcommand{\seticon}[1]{\textcolor{Black}{\csname #1\endcsname}}
