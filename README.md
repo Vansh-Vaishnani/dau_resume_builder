@@ -1,67 +1,73 @@
-# DAU Resume Builder
+<div align="center">
 
-A React-based web application to generate LaTeX resumes following Dhirubhai Ambani University's official template format.
+# 📄 DAU Resume Builder
 
-## Project Purpose
+### _Professional LaTeX Resume Generator for Dhirubhai Ambani University_
 
-Build and customize professional resumes in LaTeX format without knowing LaTeX syntax. Exports ready-to-compile ZIP packages for Overleaf.
+[![React](https://img.shields.io/badge/React-19.2.0-61dafb?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-7.2.4-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
 
-## Tech Stack
+**[🚀 Try it Now](https://dauresumebuilder.vercel.app)**
 
-- **React 19** - Component-based UI with hooks (useState, useRef)
-- **Vite** - Fast development and build tool
-- **JSZip** - ZIP file creation and extraction
-- **file-saver** - Browser download functionality
-- **react-icons** - UI icons
+</div>
 
-## Features
+---
 
-- **Smart Import** - Upload existing resume ZIP and auto-fill form
-- **Markdown Formatting** - Use `**bold**`, `*italic*`, `\\` for line breaks
-- **ZIP Export** - Download complete LaTeX package with logo and templates
-- **Live Help** - Built-in instructions modal
-- **Professional Output** - Clean usernames display, proper LaTeX escaping
+## 🎯 What is This?
 
-## What I Learned
+A web app that converts your details into **LaTeX resume files** using **DAU's official format**. No LaTeX knowledge needed - just fill the form and download.
 
-### React Concepts
-- State management with `useState` for complex nested objects
+**Made for:** DAU students and alumni
+
+---
+
+## ✨ Features
+
+- 📝 **Simple Forms** - Easy-to-use interface
+- 🔄 **Import/Export** - Save and edit anytime  
+- 🎨 **Markdown** - `**bold**`, `*italic*`, `\\` for formatting
+- 📦 **Complete Package** - ZIP with all LaTeX files + logo
+- 🔍 **ATS Tips** - Built-in guidance for better results
+
+---
+
+## 🚀 How to Use
+
+1. Fill the form with your information
+2. Click "Download LaTeX ZIP"  
+3. Upload to [Overleaf](https://overleaf.com) (New Project → Upload Project)
+4. Compile and download your PDF resume
+
+---
+
+## 🛠️ Built With
+
+⚛️ **React** • ⚡ **Vite** • 📦 **JSZip** • 💾 **file-saver** • 🎨 **react-icons**
+
+---
+
+## 💡 What I Learned
+
+This project is part of **The Odin Project's React curriculum**:
+
+- Complex state management with nested objects & arrays
 - Form handling with controlled components
-- `useRef` for file input and DOM manipulation
-- Conditional rendering for dynamic sections
-
-### Advanced JavaScript
-- Regex patterns for parsing LaTeX syntax
-- String manipulation with placeholders to avoid conflicts
-- Async/await with JSZip for file operations
+- File operations with JSZip (async/await)
+- LaTeX parsing and special character escaping
 - Bidirectional text conversion (Markdown ↔ LaTeX)
 
-### File Handling
-- Browser File API for ZIP uploads
-- Blob creation and download triggers
-- ZIP structure navigation and parsing
-- Base64 encoding for images
+---
 
-### Problem Solving
-- Special character escaping in LaTeX
-- Placeholder systems to prevent double-escaping
-- Auto-detection of nested folder structures in ZIPs
-- Regex for unclosed brace patterns
+## 📧 Contact
 
-## Usage
+Found a bug or have suggestions? [Email me](mailto:vanshvaishnani@gmail.com)
 
-1. Fill form with resume details
-2. Use Markdown shortcuts for formatting
-3. Download ZIP package
-4. Upload to Overleaf and compile
+---
 
-## Installation
+<div align="center">
 
-```bash
-npm install
-npm run dev
-```
+**Made with ❤️ by Vansh Vaishnani**
 
-## The Odin Project
+*Part of The Odin Project's React Learning Path*
 
-Part of The Odin Project's React curriculum - building real-world applications with modern web technologies.
+</div>

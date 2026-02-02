@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FiFileText, FiDownload, FiUpload, FiHelpCircle } from "react-icons/fi";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
@@ -89,6 +89,16 @@ function App() {
   
   // Help modal state
   const [showHelp, setShowHelp] = useState(false);
+  
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (showHelp) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    return () => document.body.classList.remove('modal-open');
+  }, [showHelp]);
 
   // Helper to escape LaTeX special characters
   const escapeLatex = (text) => {
@@ -1263,6 +1273,15 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
         </div>
       </div>
 
+      {/* Footer */}
+      <footer className="app-footer">
+        <div className="footer-content">
+          <p className="footer-text">
+            Made with <span className="heart">❤️</span> by <strong>Vansh Vaishnani</strong>
+          </p>
+        </div>
+      </footer>
+
       {/* Help Modal */}
       {showHelp && (
         <div className="modal-overlay" onClick={() => setShowHelp(false)}>
@@ -1272,57 +1291,216 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
               <button className="modal-close" onClick={() => setShowHelp(false)}>×</button>
             </div>
             <div className="modal-body">
-              <section className="help-section">
-                <h3>✨ Text Formatting</h3>
-                <p>Use these shortcuts in any text field:</p>
-                <table className="help-table">
-                  <tbody>
-                    <tr>
-                      <td><code>**bold text**</code></td>
-                      <td>→ Makes text <strong>bold</strong></td>
-                    </tr>
-                    <tr>
-                      <td><code>*italic text*</code></td>
-                      <td>→ Makes text <em>italic</em></td>
-                    </tr>
-                    <tr>
-                      <td><code>\\</code></td>
-                      <td>→ Line break (new line in same section)</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <p className="help-example">
-                  <strong>Example:</strong><br />
-                  <code>Secured **AIR 1,234** in national exam\\Solved **500+** problems on competitive platforms</code><br />
-                  <small>Will create bold text with a line break between sentences</small>
-                </p>
+              {/* Who Can Use Section */}
+              <section className="help-section help-highlight">
+                <h3>🎓 Who Can Use This?</h3>
+                <div className="help-card">
+                  <p><strong>✅ This tool is designed for:</strong></p>
+                  <ul className="help-list-check">
+                    <li>✓ Dhirubhai Ambani University (DAU) students and alumni</li>
+                    <li>✓ Anyone using the <strong>DAU official resume template</strong></li>
+                    <li>✓ Users who want to compile their resume on <strong>Overleaf</strong></li>
+                  </ul>
+                  <p className="help-warning">⚠️ <strong>Important:</strong> Import/Export only works with resumes created using the DAU template format. Other LaTeX formats are not supported.</p>
+                </div>
               </section>
 
+              {/* How to Use Section */}
               <section className="help-section">
-                <h3>📤 How to Use with Overleaf</h3>
+                <h3>📝 How to Use</h3>
                 <ol className="help-steps">
-                  <li>Fill out the form and click <strong>"Download LaTeX ZIP Package"</strong></li>
-                  <li>Go to <a href="https://www.overleaf.com" target="_blank" rel="noopener noreferrer">Overleaf.com</a> and login/signup</li>
-                  <li>Click <strong>"New Project"</strong> → <strong>"Upload Project"</strong></li>
-                  <li>Select the downloaded ZIP file</li>
-                  <li>Overleaf will open your resume - click <strong>"Recompile"</strong> to generate PDF</li>
-                  <li>Download PDF from Overleaf or make further edits there</li>
+                  <li>📋 <strong>Fill the form</strong> with your personal details, education, experience, projects, etc.</li>
+                  <li>🎨 <strong>Format text</strong> using Markdown shortcuts (see below)</li>
+                  <li>📥 <strong>Download ZIP</strong> by clicking "Export" button</li>
+                  <li>☁️ <strong>Upload to Overleaf:</strong>
+                    <ul>
+                      <li>Go to <a href="https://www.overleaf.com" target="_blank" rel="noopener noreferrer">Overleaf.com</a></li>
+                      <li>Click "New Project" → "Upload Project"</li>
+                      <li>Select your ZIP file → Click "Recompile"</li>
+                      <li>Download your PDF resume! 🎉</li>
+                    </ul>
+                  </li>
                 </ol>
               </section>
 
+              {/* Special Characters Section */}
               <section className="help-section">
-                <h3>🔄 Import Existing Resume</h3>
-                <p>Click <strong>"Import Resume"</strong> and select your previously downloaded ZIP file. The form will auto-fill with your data for easy editing!</p>
+                <h3>🔤 Text Formatting & Special Characters</h3>
+                <p>Use these Markdown shortcuts in <strong>any text field</strong>:</p>
+                
+                <div className="help-formatting-grid">
+                  <div className="help-format-card">
+                    <div className="format-input">**bold text**</div>
+                    <div className="format-arrow">→</div>
+                    <div className="format-output"><strong>bold text</strong></div>
+                    <div className="format-desc">Makes text bold (use for numbers, achievements)</div>
+                  </div>
+                  
+                  <div className="help-format-card">
+                    <div className="format-input">*italic text*</div>
+                    <div className="format-arrow">→</div>
+                    <div className="format-output"><em>italic text</em></div>
+                    <div className="format-desc">Makes text italic (use for emphasis)</div>
+                  </div>
+                  
+                  <div className="help-format-card">
+                    <div className="format-input">Line 1\\Line 2</div>
+                    <div className="format-arrow">→</div>
+                    <div className="format-output">Line 1<br/>Line 2</div>
+                    <div className="format-desc">Creates line break within same section</div>
+                  </div>
+                </div>
+
+                <div className="help-example">
+                  <strong>📌 Real Example:</strong>
+                  <div className="example-input">
+                    <span className="example-label">You type:</span>
+                    <code>Achieved **95% accuracy** in ML model\\Published in *IEEE Conference*</code>
+                  </div>
+                  <div className="example-output">
+                    <span className="example-label">Resume shows:</span>
+                    <div>Achieved <strong>95% accuracy</strong> in ML model</div>
+                    <div>Published in <em>IEEE Conference</em></div>
+                  </div>
+                </div>
+
+                <div className="help-card special-chars">
+                  <h4>✨ Special Characters (Auto-Handled)</h4>
+                  <p>These characters work automatically - no escape needed:</p>
+                  <table className="help-table-special">
+                    <thead>
+                      <tr>
+                        <th>Character</th>
+                        <th>You Type</th>
+                        <th>Resume Shows</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Ampersand</td>
+                        <td><code>Data & Analytics</code></td>
+                        <td>Data & Analytics</td>
+                      </tr>
+                      <tr>
+                        <td>Percentage</td>
+                        <td><code>95% accuracy</code></td>
+                        <td>95% accuracy</td>
+                      </tr>
+                      <tr>
+                        <td>Dollar</td>
+                        <td><code>$50K budget</code></td>
+                        <td>$50K budget</td>
+                      </tr>
+                      <tr>
+                        <td>Hash</td>
+                        <td><code>C# programming</code></td>
+                        <td>C# programming</td>
+                      </tr>
+                      <tr>
+                        <td>Underscore</td>
+                        <td><code>user_name</code></td>
+                        <td>user_name</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </section>
 
+              {/* ATS Tips Section */}
+              <section className="help-section help-ats">
+                <h3>🎯 ATS Optimization Tips</h3>
+                <p className="ats-intro">Applicant Tracking Systems (ATS) scan resumes before humans see them. Follow these tips to pass ATS filters:</p>
+                
+                <div className="ats-tips-grid">
+                  <div className="ats-tip-card ats-keywords">
+                    <div className="ats-icon">🔑</div>
+                    <h4>Use Keywords</h4>
+                    <ul>
+                      <li>Match job description words exactly</li>
+                      <li>Include technical skills (Python, React, AWS)</li>
+                      <li>Add industry terms and certifications</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="ats-tip-card ats-format">
+                    <div className="ats-icon">📄</div>
+                    <h4>Simple Formatting</h4>
+                    <ul>
+                      <li>✅ Use standard section names (Education, Experience)</li>
+                      <li>✅ Avoid tables and columns (our template handles this)</li>
+                      <li>✅ Use common fonts</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="ats-tip-card ats-action">
+                    <div className="ats-icon">⚡</div>
+                    <h4>Action Verbs</h4>
+                    <ul>
+                      <li><strong>Developed</strong> • <strong>Implemented</strong> • <strong>Managed</strong></li>
+                      <li><strong>Designed</strong> • <strong>Optimized</strong> • <strong>Led</strong></li>
+                      <li><strong>Achieved</strong> • <strong>Reduced</strong> • <strong>Increased</strong></li>
+                    </ul>
+                  </div>
+                  
+                  <div className="ats-tip-card ats-numbers">
+                    <div className="ats-icon">📊</div>
+                    <h4>Quantify Results</h4>
+                    <ul>
+                      <li>❌ "Improved performance"</li>
+                      <li>✅ "Improved performance by <strong>40%</strong>"</li>
+                      <li>✅ "Managed team of <strong>5 developers</strong>"</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="ats-tip-card ats-skills">
+                    <div className="ats-icon">💼</div>
+                    <h4>Skills Section</h4>
+                    <ul>
+                      <li>List all relevant technologies</li>
+                      <li>Group by category (Languages, Frameworks)</li>
+                      <li>Include both technical and soft skills</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="ats-tip-card ats-length">
+                    <div className="ats-icon">📏</div>
+                    <h4>Optimal Length</h4>
+                    <ul>
+                      <li><strong>1 page:</strong> 0-3 years experience</li>
+                      <li><strong>2 pages:</strong> 3+ years experience</li>
+                      <li>Recruiters spend <strong>6 seconds</strong> per resume!</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="help-card ats-checklist">
+                  <h4>✅ Quick Checklist Before Applying</h4>
+                  <ul className="checklist">
+                    <li>□ Tailored to job description keywords?</li>
+                    <li>□ All achievements quantified with numbers?</li>
+                    <li>□ Action verbs at start of bullet points?</li>
+                    <li>□ No spelling or grammar errors?</li>
+                    <li>□ LinkedIn/GitHub links included?</li>
+                    <li>□ File saved as "FirstName_LastName_Resume.pdf"?</li>
+                  </ul>
+                </div>
+              </section>
+
+              {/* Import/Export Section */}
               <section className="help-section">
-                <h3>💡 Tips</h3>
-                <ul className="help-tips">
-                  <li>Use special characters like &, %, $ normally - they're handled automatically</li>
-                  <li>Empty sections (like Positions of Responsibility) won't appear in final resume if not filled</li>
-                  <li>Keep descriptions concise - recruiters spend 6 seconds per resume!</li>
-                  <li>Use action verbs: "Developed", "Implemented", "Managed"</li>
-                </ul>
+                <h3>🔄 Import Existing Resume</h3>
+                <p>Click <strong>"Import"</strong> button and select a ZIP file <strong>previously exported from this tool</strong>. Your form will auto-fill with all data for easy editing!</p>
+                <p className="help-warning">⚠️ Only works with DAU template format exported from this application.</p>
+              </section>
+
+              {/* Contact Section */}
+              <section className="help-contact">
+                <h3>💬 Need Help or Have Feedback?</h3>
+                <p>Found a bug? Have suggestions? Want to report an issue?<br/>I'd love to hear from you!</p>
+                <a href="mailto:vanshvaishnani@gmail.com?subject=Feedback for DAU Resume Builder" className="contact-button">
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+                  Contact Me
+                </a>
               </section>
             </div>
           </div>
