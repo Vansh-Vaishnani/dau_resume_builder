@@ -8,36 +8,36 @@ import dauLogo from "./resume/dau.jpg";
 function App() {
   // Personal Info State
   const [personalInfo, setPersonalInfo] = useState({
-    firstName: "First",
-    lastName: "Last",
-    degree: "B.Tech – Computer Science and Engineering",
-    email: "firstlast@dau.ac.in",
-    linkedin: "linkedin.com/in/firstlast",
-    github: "github.com/firstlast"
+    firstName: "",
+    lastName: "",
+    degree: "",
+    email: "",
+    linkedin: "",
+    github: ""
   });
 
   // Education State
   const [education, setEducation] = useState([
     {
       id: 1,
-      institution: "Dhirubhai Ambani University",
-      duration: "20XX - Present",
-      score: "CPI: 7.51",
-      location: "Gandhinagar, Gujarat"
+      institution: "",
+      duration: "",
+      score: "",
+      location: ""
     },
     {
       id: 2,
-      institution: "12th School Name (GHSEB)",
-      duration: "20XX - Present",
-      score: "Percentage: ",
-      location: "Gandhinagar, Gujarat"
+      institution: "",
+      duration: "",
+      score: "",
+      location: ""
     },
     {
       id: 3,
-      institution: "10th School Name (GSEB)",
-      duration: "20XX - Present",
-      score: "Percentage: ",
-      location: "Gandhinagar, Gujarat"
+      institution: "",
+      duration: "",
+      score: "",
+      location: ""
     }
   ]);
 
@@ -45,11 +45,11 @@ function App() {
   const [experience, setExperience] = useState([
     {
       id: 1,
-      organization: "Company Name",
-      location: "City, Country",
-      position: "Position Title",
-      duration: "Month Year - Present",
-      responsibilities: ["Responsibility description here"]
+      organization: "",
+      location: "",
+      position: "",
+      duration: "",
+      responsibilities: [""]
     }
   ]);
 
@@ -57,32 +57,32 @@ function App() {
   const [projects, setProjects] = useState([
     {
       id: 1,
-      name: "Project Name",
-      technologies: "Technology Stack",
-      github: "https://github.com/username/repo",
-      points: ["Project description point 1", "Project description point 2"]
+      name: "",
+      technologies: "",
+      github: "",
+      points: [""]
     }
   ]);
 
   // Skills State
   const [skills, setSkills] = useState([
-    { id: 1, category: "Languages", items: "C++, Python, JavaScript" },
-    { id: 2, category: "Technologies", items: "React, Node.js, MongoDB" }
+    { id: 1, category: "", items: "" },
+    { id: 2, category: "", items: "" }
   ]);
 
   // Position of Responsibility State
   const [por, setPor] = useState([
     {
       id: 1,
-      position: "Vice President",
-      duration: "April 2023 - Present",
-      organization: "Association of Exploration Geophysicists",
-      responsibilities: ["Led student initiatives and coordinated industry-academic events to promote geophysics awareness and collaboration."]
+      position: "",
+      duration: "",
+      organization: "",
+      responsibilities: [""]
     }
   ]);
 
   // Achievements State
-  const [achievements, setAchievements] = useState(["Achievement description here"]);
+  const [achievements, setAchievements] = useState([""]);
 
   // File input ref for import
   const fileInputRef = useRef(null);
@@ -817,6 +817,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                 <input
                   type="text"
                   value={personalInfo.firstName}
+                  placeholder="First"
                   onChange={(e) => setPersonalInfo({...personalInfo, firstName: e.target.value})}
                 />
               </div>
@@ -825,6 +826,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                 <input
                   type="text"
                   value={personalInfo.lastName}
+                  placeholder="Last"
                   onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})}
                 />
               </div>
@@ -834,6 +836,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
               <input
                 type="text"
                 value={personalInfo.degree}
+                placeholder="B.Tech – Computer Science and Engineering"
                 onChange={(e) => setPersonalInfo({...personalInfo, degree: e.target.value})}
               />
             </div>
@@ -842,6 +845,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
               <input
                 type="email"
                 value={personalInfo.email}
+                placeholder="firstlast@dau.ac.in"
                 onChange={(e) => setPersonalInfo({...personalInfo, email: e.target.value})}
               />
             </div>
@@ -850,6 +854,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
               <input
                 type="text"
                 value={personalInfo.linkedin}
+                placeholder="linkedin.com/in/firstlast"
                 onChange={(e) => setPersonalInfo({...personalInfo, linkedin: e.target.value})}
               />
             </div>
@@ -858,6 +863,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
               <input
                 type="text"
                 value={personalInfo.github}
+                placeholder="github.com/firstlast"
                 onChange={(e) => setPersonalInfo({...personalInfo, github: e.target.value})}
               />
             </div>
@@ -875,6 +881,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={edu.institution}
+                      placeholder={index === 0 ? "Dhirubhai Ambani University" : index === 1 ? "12th School Name (GHSEB)" : "10th School Name (GSEB)"}
                       onChange={(e) => {
                         const newEdu = [...education];
                         newEdu[index].institution = e.target.value;
@@ -887,6 +894,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={edu.duration}
+                      placeholder="20XX - Present"
                       onChange={(e) => {
                         const newEdu = [...education];
                         newEdu[index].duration = e.target.value;
@@ -901,6 +909,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={edu.score}
+                      placeholder={index === 0 ? "CPI: 7.51" : "Percentage: "}
                       onChange={(e) => {
                         const newEdu = [...education];
                         newEdu[index].score = e.target.value;
@@ -913,6 +922,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={edu.location}
+                      placeholder="Gandhinagar, Gujarat"
                       onChange={(e) => {
                         const newEdu = [...education];
                         newEdu[index].location = e.target.value;
@@ -955,6 +965,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={exp.organization}
+                      placeholder="Company Name"
                       onChange={(e) => {
                         const newExp = [...experience];
                         newExp[index].organization = e.target.value;
@@ -967,6 +978,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={exp.location}
+                      placeholder="City, Country"
                       onChange={(e) => {
                         const newExp = [...experience];
                         newExp[index].location = e.target.value;
@@ -981,6 +993,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={exp.position}
+                      placeholder="Position Title"
                       onChange={(e) => {
                         const newExp = [...experience];
                         newExp[index].position = e.target.value;
@@ -993,6 +1006,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={exp.duration}
+                      placeholder="Month Year - Present"
                       onChange={(e) => {
                         const newExp = [...experience];
                         newExp[index].duration = e.target.value;
@@ -1006,6 +1020,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <textarea
                     rows="4"
                     value={exp.responsibilities.join('\n')}
+                    placeholder="Responsibility description here"
                     onChange={(e) => {
                       const newExp = [...experience];
                       newExp[index].responsibilities = e.target.value.split('\n').filter(r => r.trim());
@@ -1047,6 +1062,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <input
                     type="text"
                     value={proj.name}
+                    placeholder="Project Name"
                     onChange={(e) => {
                       const newProj = [...projects];
                       newProj[index].name = e.target.value;
@@ -1059,6 +1075,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <input
                     type="text"
                     value={proj.technologies}
+                    placeholder="Technology Stack"
                     onChange={(e) => {
                       const newProj = [...projects];
                       newProj[index].technologies = e.target.value;
@@ -1071,6 +1088,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <input
                     type="text"
                     value={proj.github}
+                    placeholder="https://github.com/username/repo"
                     onChange={(e) => {
                       const newProj = [...projects];
                       newProj[index].github = e.target.value;
@@ -1083,6 +1101,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <textarea
                     rows="4"
                     value={proj.points.join('\n')}
+                    placeholder="Project description point 1\nProject description point 2"
                     onChange={(e) => {
                       const newProj = [...projects];
                       newProj[index].points = e.target.value.split('\n').filter(p => p.trim());
@@ -1122,6 +1141,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <input
                     type="text"
                     value={skill.category}
+                    placeholder={index === 0 ? "Languages" : "Technologies"}
                     onChange={(e) => {
                       const newSkills = [...skills];
                       newSkills[index].category = e.target.value;
@@ -1134,6 +1154,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <input
                     type="text"
                     value={skill.items}
+                    placeholder={index === 0 ? "C++, Python, JavaScript" : "React, Node.js, MongoDB"}
                     onChange={(e) => {
                       const newSkills = [...skills];
                       newSkills[index].items = e.target.value;
@@ -1173,6 +1194,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={p.position}
+                      placeholder="Vice President"
                       onChange={(e) => {
                         const newPor = [...por];
                         newPor[index].position = e.target.value;
@@ -1185,6 +1207,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     <input
                       type="text"
                       value={p.duration}
+                      placeholder="April 2023 - Present"
                       onChange={(e) => {
                         const newPor = [...por];
                         newPor[index].duration = e.target.value;
@@ -1198,6 +1221,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <input
                     type="text"
                     value={p.organization}
+                    placeholder="Association of Exploration Geophysicists"
                     onChange={(e) => {
                       const newPor = [...por];
                       newPor[index].organization = e.target.value;
@@ -1210,6 +1234,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                   <textarea
                     rows="3"
                     value={p.responsibilities.join('\n')}
+                    placeholder="Led student initiatives and coordinated industry-academic events to promote geophysics awareness and collaboration."
                     onChange={(e) => {
                       const newPor = [...por];
                       newPor[index].responsibilities = e.target.value.split('\n').filter(r => r.trim());
@@ -1247,6 +1272,7 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                 <textarea
                   rows="2"
                   value={achievement}
+                  placeholder="Achievement description here"
                   onChange={(e) => {
                     const newAchievements = [...achievements];
                     newAchievements[index] = e.target.value;
