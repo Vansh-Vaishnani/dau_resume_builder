@@ -387,18 +387,18 @@ ${achievements.map(achievement => `    \\resumeItem{${escapeLatex(achievement)}}
 %----------HEADING----------%
 \\input{src/heading}
 
-%-----------EDUCATION-----------%
+${education.length > 0 && education.some(e => e.institution || e.duration || e.score || e.location) ? `%-----------EDUCATION-----------%
 \\input{src/education}
-
-%-----------EXPERIENCE-----------%
+` : ''}
+${experience.length > 0 && experience.some(exp => exp.organization || exp.position) ? `%-----------EXPERIENCE-----------%
 \\input{src/experience}
-
-%-----------PROJECTS-----------%
+` : ''}
+${projects.length > 0 && projects.some(proj => proj.name || proj.technologies) ? `%-----------PROJECTS-----------%
 \\input{src/projects}
-
-%-----------SKILLS-----------%
+` : ''}
+${skills.length > 0 && skills.some(skill => skill.category || skill.items) ? `%-----------SKILLS-----------%
 \\input{src/skills}
-
+` : ''}
 ${por.length > 0 && por.some(p => p.position || p.organization) ? `%-----------PostionOfResponisibilities-----------%
 \\input{src/por}
 ` : ''}
@@ -921,14 +921,12 @@ ${achievements.length > 0 && achievements.some(a => a.trim()) ? `%-----------ACH
                     />
                   </div>
                 </div>
-                {education.length > 1 && (
-                  <button
-                    className="btn-remove"
-                    onClick={() => setEducation(education.filter((_, i) => i !== index))}
-                  >
-                    Remove
-                  </button>
-                )}
+                <button
+                  className="btn-remove"
+                  onClick={() => setEducation(education.filter((_, i) => i !== index))}
+                >
+                  Remove
+                </button>
               </div>
             ))}
             <button
